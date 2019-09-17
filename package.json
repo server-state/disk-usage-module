@@ -1,9 +1,8 @@
 {
-  "name": "template-module",
-  "version": "1.0.0",
-  "description": "Default template for server-base modules",
+  "name": "disk-usage-module",
+  "version": "0.0.9",
+  "description": "A module to view the current disk usage on your system",
   "main": "index.js",
-  "private": true,
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint ./src ./tests",
@@ -11,14 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/server-state/template-module.git"
+    "url": "git+https://github.com/server-state/disk-usage-module.git"
   },
   "author": "server-state",
   "license": "MIT",
+  "keywords": [
+    "nodejs",
+    "module",
+    "server-state",
+    "state",
+    "admin",
+    "dashboard",
+    "info",
+    "api"
+  ],
   "bugs": {
-    "url": "https://github.com/server-state/template-module/issues"
+    "url": "https://github.com/server-state/disk-usage-module/issues"
   },
-  "homepage": "https://github.com/server-state/template-module#readme",
+  "homepage": "https://github.com/server-state/disk-usage-module#readme",
   "devDependencies": {
     "coveralls": "^3.0.6",
     "eslint": "^6.3.0",
