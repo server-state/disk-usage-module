@@ -1,6 +1,6 @@
 {
   "name": "@server-state/disk-usage-module",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "A module to view the current disk usage on your system",
   "main": "index.js",
   "scripts": {
