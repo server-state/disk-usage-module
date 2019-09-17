@@ -1,4 +1,35 @@
 const disk = require('diskusage');
+var uniqWith = require('lodash.uniqwith');
+
+
+async function getDiskNode(device) {
+    const result = await disk.check(device);
+
+    return {
+        title: device,
+        children: [
+            {
+                title: 'free',
+                children: [
+                    {
+                        title: 'available',
+                        size: result.available
+                    },
+                    {
+                        title: 'reserved',
+                        size: (result.free - result.available)
+                    }
+                ],
+                size: result.free
+            },
+            {
+                title: 'used',
+                size: (result.total - result.free)
+            }
+        ],
+        size: result.total
+    };
+}
 
 /**
  * A module for the server-state system
@@ -16,12 +47,21 @@ module.exports = async function(devices) {
         throw new Error('No devices were specified!');
     }
 
-    const result = {};
+    let virtualRoot = {
+        title: 'virtualRoot',
+        children: []
+    };
+
     for (const device of devices) {
-        if (result[device])
-            throw new Error('Device data already retrieved! "${device}"');
-        result[device] = await disk.check(device);
+        virtualRoot.children.push(await getDiskNode(device));
     }
 
-    return result;
+    const uniqueArr = uniqWith(virtualRoot.children, (elem1, elem2) => {
+        return elem1.title === elem2.title;
+    });
+
+    if (uniqueArr.length < virtualRoot.children.length)
+        throw new Error('Device data already retrieved! "' + JSON.stringify(virtualRoot.children) + '"');
+
+    return virtualRoot;
 };
