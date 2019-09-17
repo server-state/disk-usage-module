@@ -5,11 +5,8 @@ module.exports = {
         filename: 'index.js',
         libraryTarget: 'commonjs2'
     },
-    /* module: {
-        rules: [
-            { test: /\.node$/, use: 'raw-loader'}
-        ]
-    } */
+    module: {
+    },
     externals: {
         diskusage: 'diskusage'
     }
