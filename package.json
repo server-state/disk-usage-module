@@ -30,7 +30,7 @@
   "homepage": "https://github.com/server-state/disk-usage-module#readme",
   "devDependencies": {
     "coveralls": "^3.0.6",
-    "eslint": "^7.1.0",
+    "eslint": "^8.0.0",
     "jest": "^27.0.1",
     "webpack": "^5.1.2",
     "webpack-cli": "^4.0.0"
